@@ -6,6 +6,8 @@ using namespace std;
 
 void interpolatingSearch(int* mas, int size, int val)
 {
+	int steps = 0;
+
 	int start = 0;
 	int current = 0;
 	int end = size - 1;
@@ -14,6 +16,7 @@ void interpolatingSearch(int* mas, int size, int val)
 
 	while (mas[start] < val && mas[end]>val)
 	{
+		steps++;
 		current = start + ((val - mas[start]) * (end - start)) / (mas[end] - mas[start]);
 
 		if (mas[current] < val)
@@ -28,15 +31,17 @@ void interpolatingSearch(int* mas, int size, int val)
 	}
 
 	if (mas[start] == val)
-		cout << val << " founded in element " << start + 1 << endl;
+		cout << val << " founded in element " << start + 1 << "\nSteps = " << steps << endl;
 	else if (mas[end] == val)
-		cout << val << " founded in element " << end + 1 << endl;
+		cout << val << " founded in element " << end + 1 << "\nSteps = " << steps << endl;
 	else
 		cout << "Not found element " << val << endl;
 }
 
 void binarySearch(int* mas, int size, int val)
 {
+	int steps = 0;
+
 	int left = 0;
 	int current = 0;
 	int right = size;
@@ -45,6 +50,7 @@ void binarySearch(int* mas, int size, int val)
 
 	while (true)
 	{
+		steps++;
 		current = (left + right) / 2;
 
 		if (val < mas[current])
@@ -57,31 +63,22 @@ void binarySearch(int* mas, int size, int val)
 			break;
 		}
 
-		if (left == right)
+		if (left > right)
 			break;
 	}
 
 	if (place != -1)
-		cout << val << " founded in element " << place + 1 << endl;
+		cout << val << " founded in element " << place + 1 << "\nSteps = " << steps << endl;
 	else
 		cout << "Not found element " << val << endl;
 }
 
-void bubbleSort(int* mas, int size)
+int chooseValue()
 {
-	for (int i = 0; i < size - 1; i++)
-	{
-		bool flag = true;
-		for (int j = 0; j < size - 1 - i; j++)
-		{
-			if (mas[j] > mas[j + 1])
-			{
-				swap(mas[j], mas[j + 1]);
-				flag = false;
-			}
-		}
-		if (flag)	break;
-	}
+	int choice;
+	cout << "Enter the number you want to find\nChoice: ";
+	cin >> choice;
+	return choice;
 }
 
 void inputRandom(int* mas, int size)
@@ -92,6 +89,7 @@ void inputRandom(int* mas, int size)
 
 void print(int* mas, int size)
 {
+	cout << "Array:";
 	for (int i = 0; i < size; i++)
 		cout << " " << mas[i] << " ";
 	cout << endl << endl;
@@ -101,18 +99,13 @@ int main()
 {
 	srand(time(NULL));
 
-	const int size = 6;
-	int mas[size];// = { 1,3,5,9,12,18 };
+	const int size = 10;
+	int mas[size] = { 1,3,5,9,12,18,20,30,33,48 };
 
-	inputRandom(mas, size);
 	print(mas, size);
 
-	bubbleSort(mas, size);
-	print(mas, size);
-
-	//interpolatingSearch(mas, size, 9);
-	binarySearch(mas, size, 9);
-;
+	interpolatingSearch(mas, size, 33);
+	binarySearch(mas, size, 33);
 
 	return 0;
 }
