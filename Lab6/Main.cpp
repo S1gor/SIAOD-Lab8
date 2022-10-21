@@ -2,7 +2,7 @@
 
 using namespace std;
 
-/*Сравнить два  алгоритма поиска на одной последовательности*/
+/*Г‘Г°Г ГўГ­ГЁГІГј Г¤ГўГ   Г Г«ГЈГ®Г°ГЁГІГ¬Г  ГЇГ®ГЁГ±ГЄГ  Г­Г  Г®Г¤Г­Г®Г© ГЇГ®Г±Г«ГҐГ¤Г®ГўГ ГІГҐГ«ГјГ­Г®Г±ГІГЁ*/
 
 void interpolatingSearch(int* mas, int size, int val)
 {
@@ -11,8 +11,6 @@ void interpolatingSearch(int* mas, int size, int val)
 	int start = 0;
 	int current = 0;
 	int end = size - 1;
-
-	bool found = false;
 
 	while (mas[start] < val && mas[end]>val)
 	{
@@ -24,10 +22,7 @@ void interpolatingSearch(int* mas, int size, int val)
 		else if (mas[current] > val)
 			end = current - 1;
 		else
-		{
-			found = true;
 			break;
-		}
 	}
 
 	if (mas[start] == val)
