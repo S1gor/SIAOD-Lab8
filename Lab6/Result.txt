@@ -1,5 +1,5 @@
 				 |				   STEPS						|
-Number position	 |	Binary search		Interpolating search	|
+Element position |	Binary search		Interpolating search	|
 		1		 |		  3						   0			|
 		2		 |		  4						   1			|
 		3		 |		  2						   2			|
