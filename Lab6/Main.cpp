@@ -12,8 +12,6 @@ void interpolatingSearch(int* mas, int size, int val)
 	int current = 0;
 	int end = size - 1;
 
-	bool found = false;
-
 	while (mas[start] < val && mas[end]>val)
 	{
 		steps++;
@@ -24,10 +22,7 @@ void interpolatingSearch(int* mas, int size, int val)
 		else if (mas[current] > val)
 			end = current - 1;
 		else
-		{
-			found = true;
 			break;
-		}
 	}
 
 	if (mas[start] == val)
