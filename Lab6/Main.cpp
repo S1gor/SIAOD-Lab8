@@ -1,4 +1,5 @@
 #include <iostream>
+#include <time.h>
 
 using namespace std;
 
@@ -94,13 +95,24 @@ int main()
 {
 	srand(time(NULL));
 
+	clock_t start_time = clock();
+
 	const int size = 10;
 	int mas[size] = { 1,3,5,9,12,18,20,30,33,48 };
 
 	print(mas, size);
 
-	interpolatingSearch(mas, size, 33);
-	binarySearch(mas, size, 33);
+	interpolatingSearch(mas, size, 18);
+
+	clock_t end_time = clock();
+	double current_time = (double)(end_time - start_time) / CLOCKS_PER_SEC;
+	cout << "Time_inter: " << current_time << endl;
+
+	binarySearch(mas, size, 18);
+
+	clock_t end2_time = clock();
+	double current2_time = (double)(end2_time - start_time) / CLOCKS_PER_SEC;
+	cout << "Time_bin: " << current2_time << endl;
 
 	return 0;
 }
